@@ -1,48 +1,58 @@
 package com.example.domingl.androidlottienarrative;
 
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
 
 import com.airbnb.lottie.LottieAnimationView;
 
 public class MainActivity extends AppCompatActivity {
-    int step = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final LottieAnimationView animationViewNarrative = (LottieAnimationView) findViewById(R.id.animation_view_narrative);
-        animationViewNarrative.setAnimation("narrative.json");
+        LottieAnimationView animationView = findViewById(R.id.animation_view);
+        animationView.setAnimation("particles_test.json");
+        animationView.loop(true);
+        animationView.playAnimation();
 
-        animationViewNarrative.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        /*
+        final LottieAnimationView animationViewTest2 = (LottieAnimationView) findViewById(R.id.animation_view_test2);
+        animationViewTest2.setAnimation("spinner.json");
+        animationViewTest2.loop(true);
 
 
-                animationViewNarrative.playAnimation();
+        animationViewTest2.setImageAssetDelegate(new ImageAssetDelegate() {
+            @Override public Bitmap fetchBitmap(LottieImageAsset asset) {
+                // Your bitmap fetching code
 
+                Bitmap returnBitmap = null;
 
+                returnBitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.avatar);
+
+                return returnBitmap;
             }
         });
 
-        animationViewNarrative.addAnimatorUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                Log.d("pizza", "onAnimationUpdate: " + animation.getAnimatedFraction() + ", step = " + step);
+
+        animationViewTest2.playAnimation();
+        */
 
 
-            }
-        });
 
 
+
+
+
+
+
+
+
+
+
+        /*
         // Custom animation speed or duration.
-        ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(50000);
+        ValueAnimator animator = ValueAnimator.ofFloat(0.37724550f, 0.65568862f).setDuration(3000);
 
         animator.addUpdateListener(new AnimatorUpdateListener() {
             @Override
@@ -51,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         animator.start();
+        */
 
         /*
         animationViewNarrative.setOnClickListener(new View.OnClickListener() {
