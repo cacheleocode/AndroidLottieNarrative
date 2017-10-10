@@ -11,11 +11,64 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/background01"/>
+        android:background="@android:color/black"
+        app:srcCompat="@drawable/background01"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"/>
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view_location_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view_pairing_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view_pairing_loop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view_pairing_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view_remote_loop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view_remote_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"/>
 
 </android.support.constraint.ConstraintLayout>
