@@ -25,6 +25,30 @@
         tools:layout_editor_absoluteY="0dp"/>
 
     <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view_searching_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view_searching_loop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view_searching_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation_view_location_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
