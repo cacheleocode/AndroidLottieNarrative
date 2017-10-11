@@ -17,7 +17,7 @@
         tools:layout_editor_absoluteY="0dp"/>
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animation_view"
+        android:id="@+id/animation_view_3rd_party_app_background_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="invisible"
@@ -25,7 +25,77 @@
         tools:layout_editor_absoluteY="0dp"/>
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animation_view_searching_end"
+        android:id="@+id/animation_view_3rd_party_app_background_loop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view_3rd_party_app_background_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"/>
+
+    <FrameLayout
+        android:id="@+id/animation_view_download_screen"
+        android:layout_width="960.00dp"
+        android:layout_height="540.00dp"
+        android:foregroundGravity="center"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <ImageView
+            android:id="@+id/image_view_progressbar_empty"
+            android:layout_width="751.00dp"
+            android:layout_height="11dp"
+            android:layout_gravity="center"
+            android:foregroundGravity="center"
+            app:srcCompat="@drawable/progressbar"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_view_progressbar_loop"
+            android:layout_width="651dp"
+            android:layout_height="11dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="false"
+            android:scaleType="matrix"
+            />
+
+        <ImageView
+            android:id="@+id/image_view_alert"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:foregroundGravity="center"
+            app:srcCompat="@drawable/alert_confirmation_check_small"
+            tools:layout_editor_absoluteX="938dp"
+            tools:layout_editor_absoluteY="297dp"/>
+
+    </FrameLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view_correctanswer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view_success_big"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view_success_big"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="invisible"
@@ -94,5 +164,7 @@
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp"/>
+
+
 
 </android.support.constraint.ConstraintLayout>

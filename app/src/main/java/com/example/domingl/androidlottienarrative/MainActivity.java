@@ -6,11 +6,9 @@ import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
 
 import com.airbnb.lottie.LottieAnimationView;
 
@@ -23,24 +21,21 @@ public class MainActivity extends AppCompatActivity {
     private LottieAnimationView animationViewLocationStart;
     private LottieAnimationView animationViewSearchingStart;
     private LottieAnimationView animationViewSearchingLoop;
-    private LottieAnimationView animationViewSearchingEnd;
+    private LottieAnimationView animationViewSuccessBig;
+    private LottieAnimationView animationViewProgressbarLoop;
+    private FrameLayout animationViewDownloadScreen;
+    private LottieAnimationView animationViewCorrectAnswer;
+    private LottieAnimationView animationView3rdPartyAppBackgroundStart;
+    private LottieAnimationView animationView3rdPartyAppBackgroundLoop;
+    private LottieAnimationView animationView3rdPartyAppBackgroundEnd;
 
     private Integer step = 0;
     private Boolean success = false;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        /*
-        // general test
-        LottieAnimationView animationView = findViewById(R.id.animation_view);
-        animationView.setAnimation("att_logo_zoom.json");
-        animationView.loop(true);
-        animationView.playAnimation();
-        */
 
         animationViewRemoteStart = findViewById(R.id.animation_view_remote_start);
         animationViewRemoteStart.setAnimation("remote_start.json");
@@ -60,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 animationViewRemoteStart.setVisibility(View.INVISIBLE);
                 animationViewRemoteLoop.setVisibility(View.VISIBLE);
                 animationViewRemoteLoop.playAnimation();
+                step = 2;
             }
 
             @Override
@@ -85,9 +81,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animator) {
-                animationViewRemoteLoop.setVisibility(View.INVISIBLE);
-                animationViewPairingStart.setVisibility(View.VISIBLE);
-                animationViewPairingStart.playAnimation();
+                if(success == true) {
+                    animationViewRemoteLoop.setVisibility(View.INVISIBLE);
+                    animationViewPairingStart.setVisibility(View.VISIBLE);
+                    animationViewPairingStart.playAnimation();
+                    step = 3;
+                    success = false;
+                }
             }
 
             @Override
@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 animationViewPairingStart.setVisibility(View.INVISIBLE);
                 animationViewPairingLoop.setVisibility(View.VISIBLE);
                 animationViewPairingLoop.playAnimation();
+                step = 4;
             }
 
             @Override
@@ -141,9 +142,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animator) {
-                animationViewPairingLoop.setVisibility(View.INVISIBLE);
-                animationViewPairingEnd.setVisibility(View.VISIBLE);
-                animationViewPairingEnd.playAnimation();
+                if(success == true) {
+                    animationViewPairingLoop.setVisibility(View.INVISIBLE);
+                    animationViewPairingEnd.setVisibility(View.VISIBLE);
+                    animationViewPairingEnd.playAnimation();
+                    step = 5;
+                    success = false;
+                }
             }
 
             @Override
@@ -172,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
                 animationViewPairingEnd.setVisibility(View.INVISIBLE);
                 animationViewLocationStart.setVisibility(View.VISIBLE);
                 animationViewLocationStart.playAnimation();
+                step = 6;
             }
 
             @Override
@@ -200,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
                 animationViewLocationStart.setVisibility(View.INVISIBLE);
                 animationViewSearchingStart.setVisibility(View.VISIBLE);
                 animationViewSearchingStart.playAnimation();
+                step = 7;
             }
 
             @Override
@@ -228,6 +235,7 @@ public class MainActivity extends AppCompatActivity {
                 animationViewSearchingStart.setVisibility(View.INVISIBLE);
                 animationViewSearchingLoop.setVisibility(View.VISIBLE);
                 animationViewSearchingLoop.playAnimation();
+                step = 8;
             }
 
             @Override
@@ -253,9 +261,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animator) {
-                animationViewSearchingLoop.setVisibility(View.INVISIBLE);
-                animationViewSearchingEnd.setVisibility(View.VISIBLE);
-                animationViewSearchingEnd.playAnimation();
+                if (success == true) {
+                    animationViewSearchingLoop.setVisibility(View.INVISIBLE);
+                    animationViewSuccessBig.setVisibility(View.VISIBLE);
+                    animationViewSuccessBig.playAnimation();
+                    step = 9;
+                    success = false;
+                }
             }
 
             @Override
@@ -269,10 +281,185 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        animationViewSearchingEnd = findViewById(R.id.animation_view_searching_end);
-        animationViewSearchingEnd.setAnimation("searching_end.json");
-        animationViewSearchingEnd.loop(false);
+        animationViewSuccessBig = findViewById(R.id.animation_view_success_big);
+        animationViewSuccessBig.setAnimation("success_big.json");
+        animationViewSuccessBig.loop(false);
 
+        animationViewSuccessBig.addAnimatorListener(new AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                animationViewSuccessBig.setVisibility(View.INVISIBLE);
+                animationViewDownloadScreen.setVisibility(View.VISIBLE);
+                animationViewProgressbarLoop.playAnimation();
+                step = 10;
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        });
+
+        animationViewDownloadScreen = findViewById(R.id.animation_view_download_screen);
+        animationViewProgressbarLoop = findViewById(R.id.animation_view_progressbar_loop);
+        animationViewProgressbarLoop.setAnimation("progressbar_loop.json");
+        animationViewProgressbarLoop.loop(true);
+
+        animationViewProgressbarLoop.addAnimatorListener(new AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                animationViewDownloadScreen.setVisibility(View.INVISIBLE);
+                animationViewCorrectAnswer.setVisibility(View.VISIBLE);
+                animationViewCorrectAnswer.playAnimation();
+                step = 11;
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        });
+
+        animationViewCorrectAnswer = findViewById(R.id.animation_view_correctanswer);
+        animationViewCorrectAnswer.setAnimation("correctanswer.json");
+        animationViewCorrectAnswer.loop(false);
+
+        animationViewCorrectAnswer.addAnimatorListener(new AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                if (success == true) {
+                    animationViewCorrectAnswer.setVisibility(View.INVISIBLE);
+                    animationView3rdPartyAppBackgroundStart.setVisibility(View.VISIBLE);
+                    animationView3rdPartyAppBackgroundStart.playAnimation();
+                    step = 12;
+                    success = false;
+                }
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        });
+
+        animationView3rdPartyAppBackgroundStart = findViewById(R.id.animation_view_3rd_party_app_background_start);
+        animationView3rdPartyAppBackgroundStart.setAnimation("3rd_party_app_background_start.json");
+        animationView3rdPartyAppBackgroundStart.loop(false);
+
+        animationView3rdPartyAppBackgroundStart.addAnimatorListener(new AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                animationView3rdPartyAppBackgroundStart.setVisibility(View.INVISIBLE);
+                animationView3rdPartyAppBackgroundLoop.setVisibility(View.VISIBLE);
+                animationView3rdPartyAppBackgroundLoop.playAnimation();
+                step = 13;
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        });
+
+        animationView3rdPartyAppBackgroundLoop = findViewById(R.id.animation_view_3rd_party_app_background_loop);
+        animationView3rdPartyAppBackgroundLoop.setAnimation("3rd_party_app_background_loop.json");
+        animationView3rdPartyAppBackgroundLoop.loop(true);
+
+        animationView3rdPartyAppBackgroundLoop.addAnimatorListener(new AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                if (success == true) {
+                    animationView3rdPartyAppBackgroundLoop.setVisibility(View.INVISIBLE);
+                    animationView3rdPartyAppBackgroundEnd.setVisibility(View.VISIBLE);
+                    animationView3rdPartyAppBackgroundEnd.playAnimation();
+                    step = 14;
+                    success = false;
+                }
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        });
+
+        animationView3rdPartyAppBackgroundEnd = findViewById(R.id.animation_view_3rd_party_app_background_end);
+        animationView3rdPartyAppBackgroundEnd.setAnimation("3rd_party_app_background_end.json");
+        animationView3rdPartyAppBackgroundEnd.loop(false);
+
+        animationView3rdPartyAppBackgroundEnd.addAnimatorListener(new AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                animationView3rdPartyAppBackgroundEnd.setVisibility(View.INVISIBLE);
+                animationViewRemoteStart.setVisibility(View.VISIBLE);
+                animationViewRemoteStart.playAnimation();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        });
     }
 
     @Override
@@ -285,15 +472,12 @@ public class MainActivity extends AppCompatActivity {
 
                 return true;
             case KeyEvent.KEYCODE_DPAD_CENTER:
-                if (!animationViewRemoteStart.isAnimating() && animationViewRemoteStart.getVisibility() == 0) {
-                    animationViewRemoteStart.playAnimation();
-                }
-
                 if (animationViewRemoteLoop.isAnimating()) {
                     animationViewRemoteLoop.addAnimatorUpdateListener(new AnimatorUpdateListener() {
                         @Override
                         public void onAnimationUpdate(ValueAnimator animator) {
                             animator.setRepeatCount(1);
+                            success = true;
                         }
                     });
                 }
@@ -302,7 +486,8 @@ public class MainActivity extends AppCompatActivity {
                     animationViewPairingLoop.addAnimatorUpdateListener(new AnimatorUpdateListener() {
                         @Override
                         public void onAnimationUpdate(ValueAnimator animator) {
-                            animator.setRepeatCount(2);
+                            animator.setRepeatCount(1);
+                            success = true;
                         }
                     });
                 }
@@ -312,6 +497,27 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onAnimationUpdate(ValueAnimator animator) {
                             animator.setRepeatCount(1);
+                            success = true;
+                        }
+                    });
+                }
+
+                if (animationViewProgressbarLoop.isAnimating()) {
+                    animationViewProgressbarLoop.addAnimatorUpdateListener(new AnimatorUpdateListener() {
+                        @Override
+                        public void onAnimationUpdate(ValueAnimator animator) {
+                            animator.setRepeatCount(1);
+                            success = true;
+                        }
+                    });
+                }
+
+                if (animationView3rdPartyAppBackgroundLoop.isAnimating()) {
+                    animationView3rdPartyAppBackgroundLoop.addAnimatorUpdateListener(new AnimatorUpdateListener() {
+                        @Override
+                        public void onAnimationUpdate(ValueAnimator animator) {
+                            animator.setRepeatCount(1);
+                            success = true;
                         }
                     });
                 }
